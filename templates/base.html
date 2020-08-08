@@ -33,7 +33,7 @@
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-navy">
           <a class="navbar-brand" href="#">
-              <img src="media/logo-white.svg" alt="Tralee United Logo">
+              <img src="media/logo-white.svg" alt="Tralee United Logo" class="mr-md-3">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
               aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,9 +70,12 @@
   </header>
     
     {% if messages %}{% endif %}
-
+  
+    <main role="main" class="flex-shrink-0">
     {% block content %}
     {% endblock %}
+  </main>
+
     
     {% block footer_scripts %}{% endblock %}
   
