@@ -7,3 +7,16 @@ html {
 body {
     font-family: 'Lato', sans-serif;
 }
+
+.navbar .nav-link {
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.3rem;
+}
+
+.bg-navy {
+    background-color: #041f54;
+}
+
+main {
+    padding-top: 96px;
+}
