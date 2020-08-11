@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 class PublishedPosts(models.Manager):
     '''Custom query manager to pull only publishded posts.'''
@@ -32,3 +33,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def post_absoulte_url(self):
+        # using reverse function to get the canonical url for each post item - year/month/day/slug
+        return reverse('news:post_detail', args=[self.publish.year, self.publish.month, self.publish.day, self.slug])
