@@ -18,10 +18,10 @@
     {% block extra_css %}{% endblock %}
  
     {% block scripts %}
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/20b6e2b96a.js" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+      <script src="https://kit.fontawesome.com/20b6e2b96a.js" crossorigin="anonymous"></script>
     {% endblock %}
 
     {% block extra_scripts %}{% endblock %}
@@ -33,7 +33,7 @@
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-navy">
           <a class="navbar-brand" href="#">
-              <img src="media/logo-white.svg" alt="Tralee United Logo" class="mr-md-3">
+              <img src="{% static 'images/logo-white.svg' %}" alt="Tralee United Logo" class="mr-md-3">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
               aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,8 +59,8 @@
                   <li class="nav-item ml-3">
                       <a class="nav-link" href="#">Contact Us</a>
                   </li>
-
               </ul>
+
               <form class="form-inline mt-2 mt-md-0">
                   <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
@@ -71,7 +71,7 @@
     
     {% if messages %}{% endif %}
   
-    <main role="main" class="flex-shrink-0">
+  <main role="main" class="flex-shrink-0">
     {% block content %}
     {% endblock %}
   </main>
