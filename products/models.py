@@ -2,8 +2,11 @@ from django.db import models
 from django.utils import timezone
 
 class Category(models.Model):
-    name = models.CharField(max_length=120)
     friendly_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=120)
+
+    class Meta:
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.name
@@ -13,6 +16,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=254)
+    slug = models.SlugField(max_length=254, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='images/products/', blank=True)
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
