@@ -7,7 +7,11 @@ def posts_list(request):
     return render(request, 'news/list_of_posts.html', {'posts': posts})
 
 def post_detail(request, year, month, day, post):
-    post = get_object_or_404(Post, slug=post, status='published', publish_year=year, publish_month=month, publish_day=day)
+    post = get_object_or_404(Post, slug=post,
+                                   status='published',
+                                   publish__year=year,
+                                   publish__month=month,
+                                   publish__day=day)
 
     return render(request, 'news/detail_view.html', {'post': post})
 

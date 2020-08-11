@@ -2,18 +2,19 @@
 {% load static %}
 
 {% block title %}
-    - Club News
+- Club News
 {% endblock %}
 
 {% block content %}
-    {% for post in posts %}
-        <h2>
-            <a href="{{ post.post_absolute_url }}">
-                {{ post.title }}
-            </a>
-        </h2>
-        <p>
-            {{ post.body|truncatewords:30|linebreaks }}
-        </p>
-    {% endfor %}
+{% for post in posts %}
+<h2>
+    <a href="{{ post.get_post_url }}">
+        {{ post.title }}
+    </a>
+</h2>
+<p class="date">
+    Published {{ post.publish }} by {{ post.author }}
+</p>
+{{ post.body|truncatewords:30|linebreaks }}
+{% endfor %}
 {% endblock %}

@@ -35,7 +35,7 @@ class Post(models.Model):
 
     # using reverse function to get the canonical url for each post item - year/month/day/slug
     def get_post_url(self):
-            return reverse('news:post_detail',
+            return reverse('news:post_detail_view',
                         args=[self.publish.year,
                                 self.publish.month,
                                 self.publish.day, self.slug])
