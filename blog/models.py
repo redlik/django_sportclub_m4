@@ -2,6 +2,12 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+class PublishedPosts(models.Manager):
+    '''Custom query manager to pull only publishded posts.'''
+
+    def get_queryset(self):
+        return super().get_queryset().filter(status='published')
+
 class Post(models.Model):
     PUBLISH_STATUS = (
         ('draft', 'Draft'),
@@ -16,6 +22,9 @@ class Post(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=PUBLISH_STATUS, default='draft')
+
+    objects = models.Manager() # The default manager for all posts.
+    published = PublishedPosts() # Custom manager for only published posts.
 
     class Meta:
         ordering = ('-publish',)
