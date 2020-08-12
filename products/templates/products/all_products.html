@@ -4,35 +4,36 @@
 {% block content %}
 <div class="container mt-4">
     <div class="row">
-        <div class="col-sm-12 col-md-3 bg-light p-2">
-            <p class="d-sm-none d-md-block">
-                View by Category:
-            </p>          
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <span class="navbar-text d-md-none">
+        <div class="col-sm-12 col-md-3">
+            <div class="bg-light p-lg-4 p-sm-1 rounded shadow mb-4">
+                <p class="d-sm-none d-md-block">
                     View by Category:
-                  </span>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="nav flex-column">
-                        {% for category in categories %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if current_category.name == category.name %}active{% endif %}"
-                                href="{% url 'shop:all_products' %}?category={{ category.name }}">{{ category.friendly_name }}</a>
-                        </li>
-                        {% endfor %}
-                        {% if current_category %}
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                href="{% url 'shop:all_products' %}">View all</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </nav>
+                </p>
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <span class="navbar-text d-md-none">
+                        View by Category:
+                    </span>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="nav flex-column">
+                            {% for category in categories %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if current_category.name == category.name %}active{% endif %}"
+                                    href="{% url 'shop:all_products' %}?category={{ category.name }}">{{ category.friendly_name }}</a>
+                            </li>
+                            {% endfor %}
+                            {% if current_category %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'shop:all_products' %}">View all</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
 
         <div class="col-sm-12 col-md-9">
@@ -45,7 +46,7 @@
                 All products
             </h1>
             {% endif %}
-            
+
             <div class="container">
                 <div class="row">
                     {% for product in products %}
@@ -54,10 +55,14 @@
                             <img src="/media/{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.name }}</h5>
-                                <a href="{% url 'shop:all_products' %}?category={{ product.category.name }}"><h6 class="card-subtitle mb-2 text-muted">{{ product.category.friendly_name }}</h6></a>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                <a href="{% url 'shop:all_products' %}?category={{ product.category.name }}">
+                                    <h6 class="card-subtitle mb-2 text-muted">{{ product.category.friendly_name }}</h6>
+                                </a>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of
                                     the card's content.</p>
-                                <a href="{% url 'shop:product_detail' product.id %}" class="btn btn-primary">View details</a>
+                                <a href="{% url 'shop:product_detail' product.id %}" class="btn btn-primary">View
+                                    details</a>
                             </div>
                         </div>
                     </div>
