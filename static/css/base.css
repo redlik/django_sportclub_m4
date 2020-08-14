@@ -8,10 +8,15 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
-.navbar .nav-link {
+.main-nav {
     font-family: 'Zilla Slab', serif;
     font-size: 1.3rem;
 }
+
+/* .sidebar-menu .navbar .nav-link {
+    font-family: 'Rubik', serif !important;
+    font-size: 1.3rem;
+} */
 
 .bg-navy {
     background-color: #041f54;
