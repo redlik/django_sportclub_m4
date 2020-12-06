@@ -37,3 +37,44 @@ h1,h2,h3,h4,h5, h6 {
     font-weight: 500;
     color: #041f54;
 }
+
+.first-header {
+    min-height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding: 0;
+}
+
+.heading-background {
+    background-color: rgba(255,255,255,0.8);
+    position: absolute;
+    bottom: 0;
+}
+
+.heading-title {
+    font-size: 3rem;
+    color: #041f54;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.sub-heading {
+    min-height: 30vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding: 0;
+}
+
+.homepage-post-date {
+    margin-bottom: 0 !important;
+}
+
+.post-block {
+    display: block;
+    margin-bottom: 1rem;
+    min-height: 120px;
+}

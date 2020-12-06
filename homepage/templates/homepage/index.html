@@ -2,26 +2,46 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <h1 class="display-4 text-success">Homepage</h1>
         {% for heading in headings %}
-            {% if forloop.first %} 
-            <div class="col-12">
-                <h1 class="display-2 text-success">{{ heading.title }}</h1>
-            </div>
+            {% if forloop.first %}
+                <div class="col-12 first-header" style="background-image: url(/media/{{ heading.image }})">
+                    <div class="container-fluid heading-background">
+                        <a href="{{ heading.get_post_url }}"><h1 class="heading-title">{{ heading.title }} KK</h1></a>
+                        <p>{{ heading.body|truncatewords:25 }} <a href="{{ heading.get_post_url }}">read more</a></p>
+                    </div>
+                </div>
             {% else %}
-            <div class="col-12">
-                <h1 class="display-3">{{ heading.title }}</h1>
-            </div>
+                <div class="col-12 col-md-6 sub-heading" style="background-image: url(/media/{{ heading.image }})">
+                    <div class="container-fluid heading-background">
+                        <a href="{{ heading.get_post_url }}"><h2 class="subheading-title">{{ heading.title }}</h2></a>
+                        <p>{{ heading.body|truncatewords:15 }} <a href="{{ heading.get_post_url }}">read more</a></p>
+                    </div>
+                </div>
             {% endif %}
-        
+
         {% endfor %}
     </div>
+</div>
+<div class="container">
     <div class="row">
-        <div class="col-9">
+        <div class="col-12 col-md-9 mt-4">
+        <h3 class="mb-4">Club latest news</h3>
             {% for post in posts %}
-                <p>{{ post.title }}</p>
+                <div class="d-block post-block">
+                    <img src="/media/{{ post.image }}" alt="{{ post.title }}"
+                                         class="thumbnail rounded float-left mr-4">
+                    <h4>
+                        <a href="{{ post.get_post_url }}">
+                            {{ post.title }}
+                        </a>
+                    </h4>
+                    <p class="homepage-post-date" style="margin-bottom: 0;">
+                        Published on {{ post.publish|date:'d M Y' }}
+                    </p>
+                    {{ post.body|truncatewords:10 }}<a href="{{ post.get_post_url }}">read more</a>
+                </div>
             {% endfor %}
         </div>
     </div>
