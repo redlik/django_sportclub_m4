@@ -32,7 +32,7 @@
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-navy">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
               <img src="{% static 'images/logo-white.svg' %}" alt="Tralee United Logo" class="mr-md-3">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -65,6 +65,20 @@
                   <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
               </form>
+              <li class="list-inline-item">
+                        <a class="text-white nav-link" href="{% url 'basket:view_basket' %}">
+                            <div class="text-center">
+                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                <p class="my-0">
+                                    {% if grand_total %}
+                                        ${{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                        €0.00
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
           </div>
       </nav>
   </header>
