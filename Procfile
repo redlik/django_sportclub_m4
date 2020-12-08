@@ -1,1 +1,1 @@
-web: gunicorn django_sportclub_m4.wsgi:application
+web: gunicorn united.wsgi:application
