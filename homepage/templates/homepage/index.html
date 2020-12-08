@@ -6,14 +6,14 @@
     <div class="row">
         {% for heading in headings %}
             {% if forloop.first %}
-                <div class="col-12 first-header" style="background-image: url(/media/{{ heading.image }})">
+                <div class="col-12 first-header" style="background-image: url('media/{{ heading.image }}')">
                     <div class="container-fluid heading-background">
                         <a href="{{ heading.get_post_url }}"><h1 class="heading-title">{{ heading.title }} KK</h1></a>
                         <p>{{ heading.body|truncatewords:25 }} <a href="{{ heading.get_post_url }}">read more</a></p>
                     </div>
                 </div>
             {% else %}
-                <div class="col-12 col-md-6 sub-heading" style="background-image: url(/media/{{ heading.image }})">
+                <div class="col-12 col-md-6 sub-heading" style="background-image: url('media/{{ heading.image }}')">
                     <div class="container-fluid heading-background">
                         <a href="{{ heading.get_post_url }}"><h2 class="subheading-title">{{ heading.title }}</h2></a>
                         <p>{{ heading.body|truncatewords:15 }} <a href="{{ heading.get_post_url }}">read more</a></p>
@@ -30,7 +30,7 @@
             <h3 class="mb-4">Club latest news</h3>
                 {% for post in posts %}
                     <div class="d-block post-block">
-                        <img src="/media/{{ post.image }}" alt="{{ post.title }}"
+                        <img src="media/{{ post.image }}" alt="{{ post.title }}"
                                              class="thumbnail rounded float-left mr-4">
                         <h4>
                             <a href="{{ post.get_post_url }}">
