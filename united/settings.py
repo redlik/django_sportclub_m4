@@ -26,7 +26,7 @@ SECRET_KEY = 'm-j0s9i)8(1_zai(n1k!0gm5nna1v0#$b+#1o2-t@#0pr6-&w@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tralee-united.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['tralee-united.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'products',
     'basket',
     'django_extensions',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME = 'tralee-united'
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
