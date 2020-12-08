@@ -26,7 +26,7 @@ SECRET_KEY = 'm-j0s9i)8(1_zai(n1k!0gm5nna1v0#$b+#1o2-t@#0pr6-&w@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://tralee-united.herokuapp.com', 'localhost']
 
 # Application definition
 
