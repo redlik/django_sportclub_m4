@@ -9,7 +9,21 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-12">
-            
+            <hr>
+            <h2>View basket content</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {% if basket_items %}
+                <div class="table-responsive rounded">
+    
+                </div>
+            {% else %}
+            <p class="lead mb-5">The basket is empty</p>
+            <a href="{% url 'shop:all_products' %}" class="btn btn-dark rounded btn-lg"><< Go back to shop page</a>
+            {% endif %}
         </div>
     </div>
 </div>
