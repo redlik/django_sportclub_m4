@@ -6,14 +6,14 @@
     <div class="row">
         {% for heading in headings %}
             {% if forloop.first %}
-                <div class="col-12 first-header" style="background-image: url('media/{{ heading.image }}')">
+                <div class="col-12 first-header" style="background-image: url({{ heading.image.url }})">
                     <div class="container-fluid heading-background">
                         <a href="{{ heading.get_post_url }}"><h1 class="heading-title">{{ heading.title }} KK</h1></a>
                         <p>{{ heading.body|truncatewords:25 }} <a href="{{ heading.get_post_url }}">read more</a></p>
                     </div>
                 </div>
             {% else %}
-                <div class="col-12 col-md-6 sub-heading" style="background-image: url('media/{{ heading.image }}')">
+                <div class="col-12 col-md-6 sub-heading" style="background-image: url({{ heading.image.url }})">
                     <div class="container-fluid heading-background">
                         <a href="{{ heading.get_post_url }}"><h2 class="subheading-title">{{ heading.title }}</h2></a>
                         <p>{{ heading.body|truncatewords:15 }} <a href="{{ heading.get_post_url }}">read more</a></p>
