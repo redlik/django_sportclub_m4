@@ -131,3 +131,7 @@ dmypy.json
 #Application specific files and folders
 /media/images/posts/*
 /media/images/products/*
+
+# PyCharm folder
+.idea
+.idea/
