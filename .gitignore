@@ -136,3 +136,4 @@ dmypy.json
 .idea
 .idea/
 .idea/misc.xml
+.DS_Store
