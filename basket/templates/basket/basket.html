@@ -18,7 +18,36 @@
         <div class="col-12">
             {% if basket_items %}
                 <div class="table-responsive rounded">
-    
+                    <table class="table table-sm table-bordeless">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product Details</th>
+                                <th scope="col"></th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        {% for item in basket_items %}
+                        <tr>
+                            <td class="p3" style='width: 15%'>
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-thumbnail" style="width: 90px; height: 90px">
+                            </td>
+                            <td class="py-3 text-start">
+                                {{ item.product.name }}
+                            </td>
+                            <td class="py-3">
+                                {{ item.quantity }}
+                            </td>
+                            <td class="py-3">
+                                {{ item.product.price }}
+                            </td>
+                            <td class="py-3">
+                                €{{ item.product.price }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             {% else %}
             <p class="lead mb-5">The basket is empty</p>
