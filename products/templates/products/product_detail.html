@@ -18,34 +18,36 @@
                             {% csrf_token %}
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% with s=product.has_sizes %}
-                                {% if product.category.name != 'boots' %}
-                                <div class="form-group">
+                                {%  if s %}
+                                    {% if product.category.name != 'boots' %}
+                                    <div class="form-group">
+                                        <label for="id_size_{{ product.id }}">Size</label>
+                                        <select class="form-control rounded w-50" name="product_size" id='id_size_{{ product.id }}'>
+                                            <option value="" selected disabled>Please select size</option>
+                                            <option value="xs">XS</option>
+                                            <option value="s">S</option>
+                                            <option value="m">M</option>
+                                            <option value="l">L</option>
+                                            <option value="xl">XL</option>
+                                        </select>
+                                    </div>
+                                    {% else %}
+                                    <div class="form-group">
                                     <label for="id_size_{{ product.id }}">Size</label>
                                     <select class="form-control rounded w-50" name="product_size" id='id_size_{{ product.id }}'>
                                         <option value="" selected disabled>Please select size</option>
-                                        <option value="xs">XS</option>
-                                        <option value="s">S</option>
-                                        <option value="m">M</option>
-                                        <option value="l">L</option>
-                                        <option value="xl">XL</option>
+                                        <option value="35">35</option>
+                                        <option value="36">36</option>
+                                        <option value="37">37</option>
+                                        <option value="38">38</option>
+                                        <option value="39">39</option>
+                                        <option value="40">40</option>
+                                        <option value="41">41</option>
+                                        <option value="42">42</option>
+                                        <option value="43">43</option>
                                     </select>
-                                </div>
-                                {% else %}
-                                <div class="form-group">
-                                <label for="id_size_{{ product.id }}">Size</label>
-                                <select class="form-control rounded w-50" name="product_size" id='id_size_{{ product.id }}'>
-                                    <option value="" selected disabled>Please select size</option>
-                                    <option value="35">35</option>
-                                    <option value="36">36</option>
-                                    <option value="37">37</option>
-                                    <option value="38">38</option>
-                                    <option value="39">39</option>
-                                    <option value="40">40</option>
-                                    <option value="41">41</option>
-                                    <option value="42">42</option>
-                                    <option value="43">43</option>
-                                </select>
-                                </div>
+                                    </div>
+                                    {% endif %}
                                 {% endif %}
                             {% endwith %}
                             <div class="form-group">
