@@ -2,6 +2,7 @@ from decimal import Decimal
 from django.shortcuts import get_object_or_404
 from products.models import Product
 
+
 def basket_contents(request):
 
     basket_items = []
@@ -18,8 +19,8 @@ def basket_contents(request):
             'quantity': quantity,
             'product': product,
         })
-        
-        grand_total = total
+
+    grand_total = total
 
     context = {
         'basket_items': basket_items,

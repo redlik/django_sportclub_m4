@@ -19,6 +19,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=254, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='images/products/', blank=True)
+    has_sizes = models.BooleanField(default=True, null=True, blank=True)
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
