@@ -17,7 +17,6 @@
     <div class="row">
         <div class="col-12">
             {% if basket_items %}
-                {{ basket_items }}
                 <div class="table-responsive rounded">
                     <table class="table table-sm table-bordeless">
                         <thead>
@@ -26,7 +25,7 @@
                                 <th scope="col"></th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Subtotal</th>
+                                <th scope="col" class="text-right">Subtotal</th>
                             </tr>
                         </thead>
                         {% for item in basket_items %}
@@ -45,11 +44,21 @@
                             <td class="py-3">
                                 {{ item.product.price }}
                             </td>
-                            <td class="py-3">
+                            <td class="py-3 text-right">
                                 €{{ item.product.price }}
                             </td>
                         </tr>
                         {% endfor %}
+                        <tr>
+                            <td colspan="5" class="pt-5 text-right">
+                                <h6>Basket total: <strong>€{{ total|floatformat:2 }}</strong></h6>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="pt-5 text-right" colspan="5">
+                            <a href="{% url 'shop:all_products' %}" class="btn btn-dark rounded"><i class="fas fa-shopping-basket mr-2"></i> Keep Shopping</a>
+                        </td>
+                    </tr>
                     </table>
                 </div>
             {% else %}
