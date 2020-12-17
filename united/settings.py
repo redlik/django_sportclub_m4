@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'basket',
     'django_extensions',
     'storages',
+    'checkout'
 ]
 
 MIDDLEWARE = [

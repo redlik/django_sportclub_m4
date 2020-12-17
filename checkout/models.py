@@ -18,9 +18,9 @@ class Order(models.Model):
     address1 = models.CharField(max_length=32, null=False, blank=False)
     address2 = models.CharField(max_length=32, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
-    order_total = models.DecimalField(max_digits=6, null=False, blank=False)
-    delivery_cost = models.DecimalField(max_digits=6, null=False, blank=False)
-    grand_total = models.DecimalField(max_digits=12, null=False, blank=False)
+    order_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False)
+    delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False)
+    grand_total = models.DecimalField(max_digits=12, decimal_places=2, null=False, blank=False)
 
     def _generate_order_number(self):
         """
@@ -28,7 +28,7 @@ class Order(models.Model):
         """
         return uuid.uuid4().hex.upper()
 
-    def save(self, **args, **kwargs):
+    def save(self, *args, **kwargs):
         if not self.order_number:
             self.order_number = self._generate_order_number
         super().save(*args, **kwargs)
@@ -54,7 +54,7 @@ class OrderLineItem(models.Model):
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
-    def save(self, **args, **kwargs):
+    def save(self, *args, **kwargs):
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
