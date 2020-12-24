@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load basket_tools %}
 
 {% block title %}
 - View basket
@@ -45,7 +46,7 @@
                                 {{ item.product.price }}
                             </td>
                             <td class="py-3 text-right">
-                                €{{ item.product.price }}
+                                €{{ item.product.price| calc_subtotal:item.quantity }}
                             </td>
                         </tr>
                         {% endfor %}
