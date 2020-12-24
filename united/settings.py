@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'storages',
     'checkout',
-    'crispy-forms',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
