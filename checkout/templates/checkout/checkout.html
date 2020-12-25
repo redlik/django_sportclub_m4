@@ -80,6 +80,7 @@
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
                             <span>Your card will be charged <strong>€ {{ grand_total|floatformat:2 }}</strong></span>
+                            <span>Your card will be charged <strong>€ {{ grand_total|floatformat:2 }}</strong></span>
                         </p>
                     </div>
                 </form>
@@ -153,7 +154,7 @@
                 iconColor: '#dc3545'
             }
         };
-        var card = elements.create('card', {style: style});
+        var card = elements.create('card', {style: style, hidePostalCode : true});
         card.mount('#card-element');
 
         // Handle realtime validation errors on the card element
@@ -175,7 +176,7 @@
         // Handle form submit
         var form = document.getElementById('payment-form');
 
-        form.addEventListener('submit', function (ev) {
+        form.addEventListener('submit', function(ev) {
             ev.preventDefault();
             card.update({'disabled': true});
             $('#submit-button').attr('disabled', true);
