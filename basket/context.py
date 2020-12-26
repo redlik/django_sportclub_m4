@@ -6,6 +6,7 @@ from products.models import Product
 def basket_contents(request):
     basket_items = []
     total = 0
+    delivery = 0
     product_count = 0
     basket = request.session.get('basket', {})
 
@@ -30,12 +31,16 @@ def basket_contents(request):
                     'product': product,
                     'size': size,
                 })
-
-    grand_total = total
+    if total < 100:
+        delivery = 5
+    else:
+        delivery = 0
+    grand_total = total + delivery
 
     context = {
         'basket_items': basket_items,
         'total': total,
+        'delivery': delivery,
         'product_count': product_count,
         'grand_total': grand_total,
     }
