@@ -57,7 +57,14 @@
                         </tr>
                     <tr>
                         <td class="pt-5 text-right" colspan="5">
-                            <a href="{% url 'shop:all_products' %}" class="btn btn-dark rounded"><i class="fas fa-shopping-basket mr-2"></i> Keep Shopping</a>
+                            <a href="{% url 'shop:all_products' %}" class="btn btn-dark rounded">
+                                <i class="fas fa-shopping-basket mr-2"></i> Keep Shopping</a>
+                            <a href="{% url 'checkout' %}" class="btn btn-primary">
+                                        <span class="text-uppercase">Secure Checkout</span>
+                                        <span class="icon">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    </a>
                         </td>
                     </tr>
                     </table>
