@@ -31,7 +31,7 @@ def basket_contents(request):
                     'product': product,
                     'size': size,
                 })
-    if total < 100:
+    if total < 100 and total != 0:
         delivery = 5
     else:
         delivery = 0
