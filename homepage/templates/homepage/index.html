@@ -30,7 +30,7 @@
             <h3 class="mb-4">Club latest news</h3>
                 {% for post in posts %}
                     <div class="d-block post-block">
-                        <img src="media/{{ post.image }}" alt="{{ post.title }}"
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}"
                                              class="thumbnail rounded float-left mr-4">
                         <h4>
                             <a href="{{ post.get_post_url }}">
@@ -46,6 +46,15 @@
         </div>
         <div class="col-12 col-md-3 mt-4">
             <h3 class="mb-4">Buy club gear</h3>
+            <ul class="list-unstyled">
+                {% for product in  featured_products %}
+                    <li class="mb-4"><a href="{% url 'shop:product_detail' product.id %}"><img src="{{ product.image.url }}" alt="{{ product.name }}"
+                                                       class="thumbnail rounded mx-auto d-block shadow-sm mb-2">
+                        <h5 class="text-center">{{ product.name }}</h5></a>
+                    </li>
+            {% endfor %}
+            </ul>
+
 
         </div>
 
