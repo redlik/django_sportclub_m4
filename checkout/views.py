@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 
 import stripe
+import json
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -11,6 +12,7 @@ from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from products.models import Product
 from basket.context import basket_contents
+
 
 @require_POST
 def cache_checkout_data(request):
@@ -49,7 +51,6 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
-            print(order)
             for product_id, item_data in basket.items():
                 try:
                     product = Product.objects.get(id=product_id)
@@ -84,7 +85,6 @@ def checkout(request):
                     Please double check your information.')
     else:
         basket = request.session.get('basket', {})
-        print(basket)
         if not basket:
             messages.error(request, "The basket is empty at the moment")
             return redirect(reverse('shop:all_products'))
