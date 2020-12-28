@@ -79,8 +79,8 @@ class StripeWH_Handler:
                     original_basket=basket,
                     stripe_pid=pid,
                 )
-                for item_id, item_data in json.loads(basket).items():
-                    product = Product.objects.get(id=item_id)
+                for product_id, item_data in json.loads(basket).items():
+                    product = Product.objects.get(id=product_id)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
@@ -89,7 +89,7 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
+                        for size, quantity in item_data['products_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
