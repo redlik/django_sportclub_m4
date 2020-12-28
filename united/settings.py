@@ -24,7 +24,11 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'm-j0s9i)8(1_zai(n1k!0gm5nna1v0#$b+#1o2-t@#0pr6-&w@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+if 'DATABASE_URL' in os.environ:
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ['tralee-united.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -71,6 +75,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
