@@ -52,7 +52,6 @@ class StripeWH_Handler:
                     address1__iexact=shipping_details.address.line1,
                     address2__iexact=shipping_details.address.line2,
                     grand_total=grand_total,
-                    original_basket=basket,
                     stripe_pid=pid,
                 )
                 order_exists = True
