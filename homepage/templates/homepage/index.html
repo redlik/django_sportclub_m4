@@ -8,7 +8,7 @@
             {% if forloop.first %}
                 <div class="col-12 first-header" style="background-image: url({{ heading.image.url }})">
                     <div class="container-fluid heading-background">
-                        <a href="{{ heading.get_post_url }}"><h1 class="heading-title">{{ heading.title }} KK</h1></a>
+                        <a href="{{ heading.get_post_url }}"><h1 class="heading-title">{{ heading.title }}</h1></a>
                         <p>{{ heading.body|truncatewords:25 }} <a href="{{ heading.get_post_url }}">read more</a></p>
                     </div>
                 </div>
