@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    - About us
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row my-4">
+            <div class="col">
+                <h1>About Us</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h2>Club History</h2>
+                <div>
+                    <p>Tralee United is an association football club based in Tralee, Ireland who played in the League
+                        of
+                        Ireland and currently have teams competing in the underage National League of Ireland.</p>
+                    <p>The first Tralee United was founded in 1937 and has had a number of guises through its history,
+                        known at different times as Tralee, Tralee United, Tralee City and Tralee 37. Each manifestation
+                        of
+                        the club has been the sole representative of senior football in Tralee city since 1937.
+                    </p>
+                    <p>Tralee won the League of Ireland title twice, in the 1959–60 and 1979–80 seasons, and the FAI Cup
+                        twice, in 1971 and 1982. They also won the League of Ireland Cup three times, 1975–76, 1992–93
+                        and
+                        2001–02. The club has competed in European competitions on six occasions.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <img src="{% static 'images/history1.jpg' %}" class="img-fluid img-thumbnail shadow"
+                     alt="Tralee United History">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12 col-md-6 order-md-1 order-sm-2">
+                <img src="{% static 'images/history2.jpg' %}" class="img-fluid img-thumbnail shadow"
+                     alt="Tralee United History">
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-sm-1">
+                <h4>Foundation and early years</h4>
+                <p>Tralee got its first taste of senior soccer in the early 1930s when the Kerry District Management
+                    Committee (KDMC) arranged a number of friendly matches between senior clubs such as Waterford United
+                    and Bray and a local junior selection. The success of these fixtures prompted the KDMC to form a
+                    senior side and attempt to gain entry to the Free State League. Their application was accepted in
+                    June 1937 and a Tralee senior team replaced Dolphin who had withdrawn from the league. On 19 July
+                    1937, a new, private company, Tralee Association Football and Sports Co. Ltd, was registered.</p>
+
+                <p>On 22 August 1937, Tralee played its first match. It was against Shamrock Rovers in the Dublin City
+                    Cup, a prominent competition that ran from the 1930s to the 1970s, and won 1–0. They ended the
+                    1937–38 season in 10th place out of 12 teams, but managed to capture their first trophy when they
+                    beat Cork United 1–0 in the replayed final of the Munster Senior Cup at the Markets Field. During
+                    those early seasons, Tralee lined out in red-and-white striped jerseys and white shorts. When
+                    Waterford resigned from the league in 1941, the club purchased their blue jerseys and would wear
+                    blue and white for the next 40 years.</p>
+
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12 col-md-6">
+                <h4>Tralee United Stadiums</h4>
+                <p>
+                    Tralee FC has used a number of venues around the city as their home ground over the years, including
+                    Markets Field in Garryowen, Jackman Park on Carey’s Road, Hogan Park in Rathbane, Thomond Park and Pike
+                    Rovers ground at Crossagalla. The Markets Field has always been considered to be the spiritual home of
+                    football in the city as the club enjoyed considerable success at the venue and moving from there to
+                    Hogan Park heralded a serious decline in the club’s fortunes. Up until 2012, and Tralee progress into
+                    the Premier Division the club was using Jackman Park, which belongs to the Kerry District League (KDL),
+                    for home games. It has a training base at Knocklisheen, on the north side of the city. For the beginning
+                    of the new 2013 season, it was announced that Thomond Park would play host to Tralee FC’s home games for
+                    the coming seasons with some sources estimating it would be 2015 before Tralee would get to return to
+                    the Markets Field
+                </p>
+                <p>
+                    On promotion to the Airtricity League of Ireland Premier Division for the 2013 Season, Tralee moved
+                    to 26,500 capacity stadium Thomond Park for their home games. The club returned to the Markets Field on
+                    Friday 5 June 2015 for the first time in 31 years, losing 1–2 to Drogheda United in the League of
+                    Ireland Premier Division.
+                </p>
+            </div>
+            <div class="col-12 col-md-6">
+                 <img src="{% static 'images/stadium.jpg' %}" class="img-fluid img-thumbnail shadow"
+                     alt="Tralee United Stadium">
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
