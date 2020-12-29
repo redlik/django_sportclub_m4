@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contact
+from .models import Contact, Member
 
 
 class ContactForm(forms.ModelForm):
@@ -10,3 +10,10 @@ class ContactForm(forms.ModelForm):
                   'subject',
                   'message',
                   ]
+
+
+class MemberForm(forms.ModelForm):
+    class Meta:
+        model = Member
+        fields = "__all__"
+

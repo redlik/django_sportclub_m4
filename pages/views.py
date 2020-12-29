@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 
-from .models import Contact
-from .forms import ContactForm
+from .models import Contact, Member
+from .forms import ContactForm, MemberForm
+
 
 def contact_page(request):
     if request.method == 'POST':
@@ -23,8 +24,26 @@ def contact_page(request):
     }
     return render(request, template, context)
 
+
 def about_page(request):
     return render(request, 'pages/about_us.html')
 
+
 def join_page(request):
+    if request.method == 'POST':
+        form = MemberForm(request.POST or None)
+        if form.is_valid:
+            member = form.save()
+            messages.success(request, 'Thanks! We will contact you once your membership is active')
+            form.clean()
+            return HttpResponseRedirect(request.path_info)
+        else:
+            messages.error(request, 'We could not process your application. Please ensure the form is valid.')
+    else:
+        form = MemberForm()
+    template = 'pages/join_us.html'
+
+    context = {
+        'form': form,
+    }
     return render(request, template, context)

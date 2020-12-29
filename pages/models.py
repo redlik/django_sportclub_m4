@@ -22,7 +22,7 @@ class Member(models.Model):
     ]
     first_name = models.CharField(max_length=20, null=False, blank=False)
     last_name = models.CharField(max_length=20, null=False, blank=False)
-    date_of_birth = models.DateTimeField(auto_now_add=True)
+    date_of_birth = models.DateField(auto_now_add=False)
     email = models.CharField(max_length=50, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     address1 = models.CharField(max_length=32, null=False, blank=False)
