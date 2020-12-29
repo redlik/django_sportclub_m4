@@ -1,0 +1,4 @@
+New membership application sent from {{ member.email }}
+
+Details provided:
+Name: {{ member.first_name }} {{ member.last_name }}

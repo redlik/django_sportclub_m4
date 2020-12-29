@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.contrib import messages
+from django.conf import settings
+
 
 from .models import Contact, Member
 from .forms import ContactForm, MemberForm
@@ -36,6 +40,10 @@ def join_page(request):
             member = form.save()
             messages.success(request, 'Thanks! We will contact you once your membership is active')
             form.clean()
+            subject = request.POST.get('email')
+            body = render_to_string('pages/membership_email/application.txt', {'member': member})
+            admin_email = settings.ADMIN_EMAIL
+            send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [admin_email])
             return HttpResponseRedirect(request.path_info)
         else:
             messages.error(request, 'We could not process your application. Please ensure the form is valid.')
