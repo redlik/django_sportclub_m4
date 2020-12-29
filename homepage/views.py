@@ -6,7 +6,7 @@ def index(request):
     """ View to display homepage """
     headings = Post.published.all()[:3]
     posts = Post.published.all()[3:99]
-    featured_products = Product.objects.order_by('?')[:3]
+    featured_products = Product.objects.order_by('?')[:4]
     context = {
         'headings': headings,
         'posts': posts,
