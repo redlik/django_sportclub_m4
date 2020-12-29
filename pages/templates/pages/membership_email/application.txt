@@ -1,4 +1,14 @@
 New membership application sent from {{ member.email }}
 
-Details provided:
+Personal details:
 Name: {{ member.first_name }} {{ member.last_name }}
+Phone: {{ member.phone_number}}    Email: {{ member.email }}
+D.O.B.: {{ member.date_of_birth }}
+
+Contact details:
+{{ member.address1 }}
+{{ member.address2 }}
+{{ member.city }}
+{{ member.county }}
+{{ member.postcode }}
+{{ member.country }}
