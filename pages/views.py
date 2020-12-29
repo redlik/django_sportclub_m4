@@ -40,6 +40,7 @@ def join_page(request):
             member = form.save()
             messages.success(request, 'Thanks! We will contact you once your membership is active')
             form.clean()
+            print(member.email)
             subject = request.POST.get('email')
             body = render_to_string('pages/membership_email/application.txt', {'member': member})
             admin_email = settings.ADMIN_EMAIL
