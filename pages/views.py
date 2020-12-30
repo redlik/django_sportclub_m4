@@ -11,6 +11,9 @@ from .forms import ContactForm, MemberForm
 
 
 def contact_page(request):
+    '''
+    View to display page with contact form and process the entries
+    '''
     if request.method == 'POST':
         form = ContactForm(request.POST or None)
         if form.is_valid:
@@ -19,7 +22,7 @@ def contact_page(request):
             subject = request.POST.get('subject')+' - '+request.POST.get('full_name')
             body = request.POST.get('message')
             sender = request.POST.get('email')
-            admin_email = settings.ADMIN_EMAIL
+            admin_email = settings.ADMIN_EMAIL  #admin email needs to be set in os.env
             send_mail(subject, body, sender, [admin_email])
             form.clean()
             return HttpResponseRedirect(request.path_info)
@@ -35,10 +38,16 @@ def contact_page(request):
 
 
 def about_page(request):
+    '''
+    View to display static About page
+    '''
     return render(request, 'pages/about_us.html')
 
 
 def join_page(request):
+    '''
+    View to display the membership page and process application entries
+    '''
     if request.method == 'POST':
         form = MemberForm(request.POST or None)
         if form.is_valid:

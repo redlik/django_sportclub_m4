@@ -32,6 +32,7 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """ Function to show checkout page and process the payment """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 

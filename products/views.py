@@ -3,6 +3,8 @@ from .models import Product, Category
 
 
 def all_products(request):
+    """ View to show main Shop page """
+
     products = Product.objects.all()
     categories = Category.objects.all()
     current_category = None
@@ -18,6 +20,7 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
+    """ View to show individual products """
     product = get_object_or_404(Product, pk=product_id)
 
     return render(request, 'products/product_detail.html', {'product': product})

@@ -5,12 +5,12 @@ from products.models import Product
 
 
 def view_basket(request):
+    """ View to display basket page with current basket content """
     return render(request, 'basket/basket.html')
 
 
 def add_to_basket(request, product_id):
     """ Function to add product,size and quantity to the basket """
-
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     size = None
