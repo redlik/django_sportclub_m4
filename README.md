@@ -4,7 +4,7 @@
 For my fourth and final project I’ve created a website for a fictional football club - Tralee United - based in my hometown of Tralee. I decided to select this type of website for my project because a club website can include many different sections such us blog-type news section, shopping page with club’s gear, membership forms etc., just so I can learn to use as many functions of the framework as possible.
 The site is built using Django framework, with Bootstrap CSS framework for layout and JavaScript for interactivity, payments verifications.
 
-The live version of the project can be view at: [Tralee United App](https://tralee-united.herokuapp.com/){:target="_blank" rel="noopener"}
+The live version of the project can be view at: [Tralee United App](https://tralee-united.herokuapp.com/)
 
 ## UX
 ### User Stories
