@@ -22,25 +22,58 @@
                 {% if messages %}
                     <ul class="list-unstyled">
                         {% for message in messages %}
-                                <li{% if message.tags %} class="alert alert-success" role="alert"{% endif %}>
-                                    {{ message }}
-                                </li>
+                            <li{% if message.tags %} class="alert alert-success" role="alert"{% endif %}>
+                                {{ message }}
+                            </li>
                         {% endfor %}
                     </ul>
                 {% endif %}
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-6">
-
-            </div>
-            <div class="col-12 col-md-6 bg-light rounded shadow-sm p-2">
-                <p>If you have any queries to the club official, your membership or previous order use the form below:</p>
-                <form class="mt-3" action="{% url 'pages:contact_page' %}" method="POST" id="contact-form">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <button class="btn btn-secondary text-uppercase float-right">Send</button>
-                </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 mb-4 px-md-4">
+                    <h4>Tralee United Academy & Training Centre</h4>
+                    <div class="d-flex justify-content-between">
+                        <div>North Circular Road<br/>
+                            <small class="text-muted">Open Mon - Fri 09:00 - 16:00</small>
+                        </div>
+                        <div>Tel: 066 888 8888</div>
+                    </div>
+                    <hr>
+                    <h4 class="mt-4">Tralee United Official Store</h4>
+                    <div class="d-flex justify-content-between">
+                        <div>Castle Street<br/>
+                            <small class="text-muted">Open Mon - Sat 09:00 - 18:00</small>
+                        </div>
+                        <div>Tel: 066 888 8888</div>
+                    </div>
+                    <hr>
+                    <h4 class="mt-4">Contact Personnel</h4>
+                    <small class="text-muted">For all media related matters, including matchday accreditation, please
+                        contact the club via email </small>
+                    <div class="d-flex justify-content-between my-2 bg-light p-2 rounded">
+                        <div><strong>John Lynch</strong><br/>
+                            <small class="text-muted">Media Officer</small>
+                        </div>
+                        <div>john@traleeunited.ie</div>
+                    </div>
+                    <div class="d-flex justify-content-between my-2 bg-light p-2 rounded">
+                        <div><strong>Mark O'Neill</strong><br/>
+                            <small class="text-muted">Community Officer</small>
+                        </div>
+                        <div>mark@traleeunited.ie</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 bg-light rounded shadow-sm p-2 mb-4">
+                    <p>If you have any queries to the club official, your membership or previous order use the form
+                        below:</p>
+                    <form class="mt-3" action="{% url 'pages:contact_page' %}" method="POST" id="contact-form">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-secondary text-uppercase float-right">Send</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
