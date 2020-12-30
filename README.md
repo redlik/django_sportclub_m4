@@ -41,13 +41,13 @@ Django breaks down all functional sections of the site into separate ‘apps’,
 - Membership page, with membership form
 ### Skeleton
 The mockups were created using Balsamiq app. Below is the selection of various screens in desktop and mobile formats:
-- Homepage: [Desktop](../blob/master/readme-images/Homepage.png), [Mobile]
-- News timeline: [Desktop]
-- News post: [Desktop]
-- Shop page: [Desktop], [Mobile]
-- Product page: [Desktop], [Mobile]
-- Basket page: [Desktop]
-- Checkout page: [Desktop]
+- Homepage: [Desktop](../master/readme-images/Homepage.png), [Mobile](../master/readme-images/Mobile-Homepage.png)
+- News timeline: [Desktop](../master/readme-images/News.png)
+- News post: [Desktop](../master/readme-images/News-Item.png)
+- Shop page: [Desktop](../master/readme-images/Shop.png), [Mobile](../master/readme-images/Mobile-Shop.png)
+- Product page: [Desktop](../master/readme-images/Product.png), [Mobile](../master/readme-images/Mobile-Product.png)
+- Basket page: [Desktop](../master/readme-images/Basket.png)
+- Checkout page: [Desktop](../master/readme-images/Checkout.png)
 ## Development
 - The developments start with the installation of Django package using `pip3 install django` command in the project folder
 - Django needs a database to run so the next thing to do is to create one using `python manage.py migrate` command, which later is used to update database structure
