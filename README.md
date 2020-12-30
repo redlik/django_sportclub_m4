@@ -41,7 +41,7 @@ Django breaks down all functional sections of the site into separate ‘apps’,
 - Membership page, with membership form
 ### Skeleton
 The mockups were created using Balsamiq app. Below is the selection of various screens in desktop and mobile formats:
-- Homepage: [Desktop], [Mobile]
+- Homepage: [Desktop](../blob/master/readme-images/Homepage.png), [Mobile]
 - News timeline: [Desktop]
 - News post: [Desktop]
 - Shop page: [Desktop], [Mobile]
