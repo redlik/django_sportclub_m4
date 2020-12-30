@@ -16,6 +16,19 @@
         </div>
     </div>
     <div class="row">
+        <div class="col">
+            {% if messages %}
+                <ul class="list-unstyled">
+                    {% for message in messages %}
+                            <li{% if message.tags %} class="alert alert-success" role="alert"{% endif %}>
+                                {{ message }}
+                            </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </div>
+    </div>
+    <div class="row">
         <div class="col-12">
             {% if basket_items %}
                 <div class="table-responsive rounded">
@@ -39,8 +52,41 @@
                                 <p class="my-0">{% if item.product.has_sizes %}Size: {{ item.size|upper }}{% endif %}</p>
 
                             </td>
-                            <td class="py-3">
-                                {{ item.quantity }}
+                            <td class="py-3 w-25">
+                                <form class="form update-form" method="POST" action="{% url 'basket:adjust_basket' item.product.id %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button class="decrement-qty btn btn-sm btn-dark rounded-0"
+                                                            data-item_id="{{ item.product.id }}" id="decrement-qty_{{ item.product.id }}">
+                                                            <span>
+                                                                <i class="fas fa-minus fa-sm"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    <input class="form-control form-control-sm qty_input w-25" type="number"
+                                                        name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                        data-item_id="{{ item.product.id }}"
+                                                        id="id_qty_{{ item.product.id }}">
+                                                    <div class="input-group-append">
+                                                        <button class="increment-qty btn btn-sm btn-dark rounded-0"
+                                                            data-item_id="{{ item.product.id }}" id="increment-qty_{{ item.product.id }}">
+                                                            <span>
+                                                                <i class="fas fa-plus fa-sm"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    {% if item.product.has_sizes %}
+                                                        <input type="hidden" name="product_size" value="{{ item.size }}">
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div>
+                                            <a class="update-link text-info"><small>Update</small></a>
+                                            <a class="remove-item text-danger float-right" id="remove_{{ item.product.id }}" data-product_size="{{ item.product.size }}"><small>Remove</small></a>
+                                        </div>
                             </td>
                             <td class="py-3">
                                 {{ item.product.price }}
@@ -76,4 +122,33 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block footer_scripts %}
+{{ block.super }}
+{% include 'basket/includes/quantity_input_script.html' %}
+
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        console.log(itemId);
+        var size = $(this).data('product_size');
+        var url = `/basket/remove/${itemId}/`;
+        console.log(url);
+        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
 {% endblock %}
