@@ -2,36 +2,39 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        {% for heading in headings %}
-            {% if forloop.first %}
-                <div class="col-12 first-header" style="background-image: url({{ heading.image.url }})">
-                    <div class="container-fluid heading-background">
-                        <a href="{{ heading.get_post_url }}"><h1 class="heading-title">{{ heading.title }}</h1></a>
-                        <p>{{ heading.body|truncatewords:25 }} <a href="{{ heading.get_post_url }}">read more</a></p>
+    <div class="container-fluid">
+        <div class="row">
+            {% for heading in headings %}
+                {% if forloop.first %}
+                    <div class="col-12 first-header" style="background-image: url({{ heading.image.url }})">
+                        <div class="container-fluid heading-background">
+                            <a href="{{ heading.get_post_url }}"><h1 class="heading-title">{{ heading.title }}</h1></a>
+                            <p>{{ heading.body|truncatewords:25 }} <a href="{{ heading.get_post_url }}">read more</a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            {% else %}
-                <div class="col-12 col-md-6 sub-heading" style="background-image: url({{ heading.image.url }})">
-                    <div class="container-fluid heading-background">
-                        <a href="{{ heading.get_post_url }}"><h2 class="subheading-title">{{ heading.title }}</h2></a>
-                        <p>{{ heading.body|truncatewords:15 }} <a href="{{ heading.get_post_url }}">read more</a></p>
+                {% else %}
+                    <div class="col-12 col-md-6 sub-heading" style="background-image: url({{ heading.image.url }})">
+                        <div class="container-fluid heading-background">
+                            <a href="{{ heading.get_post_url }}"><h2 class="subheading-title">{{ heading.title }}</h2>
+                            </a>
+                            <p>{{ heading.body|truncatewords:15 }} <a href="{{ heading.get_post_url }}">read more</a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
 
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-md-9 mt-4">
-            <h3 class="mb-4">Club latest news</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-9 mt-4">
+                <h3 class="mb-4">Club latest news</h3>
                 {% for post in posts %}
                     <div class="d-block post-block">
                         <img src="{{ post.image.url }}" alt="{{ post.title }}"
-                                             class="thumbnail rounded float-left mr-4">
+                             class="thumbnail rounded float-left mr-4">
                         <h4>
                             <a href="{{ post.get_post_url }}">
                                 {{ post.title }}
@@ -43,23 +46,30 @@
                         {{ post.body|truncatewords:10 }}<a href="{{ post.get_post_url }}">read more</a>
                     </div>
                 {% endfor %}
+            </div>
+            <div class="col-12 col-md-3 mt-4">
+                <h3 class="mb-4">Buy club gear</h3>
+                <ul class="list-unstyled">
+                    {% for product in featured_products %}
+                        <li class="mb-4">
+                            <a href="{% url 'shop:product_detail' product.id %}">
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                                     class="thumbnail rounded mx-auto d-block shadow-sm mb-2">
+                                {% else %}
+                                <img src="{% static 'images/noimage.png' %}" alt="{{ product.name }}"
+                                     class="thumbnail rounded mx-auto d-block shadow-sm mb-2">
+                                <h5 class="text-center">{{ product.name }}</h5></a>
+                                {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+
+
+            </div>
+
         </div>
-        <div class="col-12 col-md-3 mt-4">
-            <h3 class="mb-4">Buy club gear</h3>
-            <ul class="list-unstyled">
-                {% for product in  featured_products %}
-                    <li class="mb-4"><a href="{% url 'shop:product_detail' product.id %}"><img src="{{ product.image.url }}" alt="{{ product.name }}"
-                                                       class="thumbnail rounded mx-auto d-block shadow-sm mb-2">
-                        <h5 class="text-center">{{ product.name }}</h5></a>
-                    </li>
-            {% endfor %}
-            </ul>
-
-
-        </div>
-
     </div>
-</div>
 
 
 {% endblock %}

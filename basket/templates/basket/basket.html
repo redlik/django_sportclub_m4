@@ -45,7 +45,11 @@
                         {% for item in basket_items %}
                         <tr>
                             <td class="p3" style='width: 15%'>
+                                {% if product.image %}
                                 <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-thumbnail" style="width: 90px; height: 90px">
+                                {% else %}
+                                <img src="{% static 'images/noimage.png' %}" alt="{{ item.product.name }}" class="img-thumbnail" style="width: 90px; height: 90px">
+                                {% endif %}
                             </td>
                             <td class="py-3 text-start">
                                 <p class="my-0">{{ item.product.name }}</p>
