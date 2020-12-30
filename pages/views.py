@@ -16,6 +16,11 @@ def contact_page(request):
         if form.is_valid:
             contact = form.save()
             messages.success(request, 'Thank you for the message, a member of staff will get back to you')
+            subject = request.POST.get('subject')+' - '+request.POST.get('full_name')
+            body = request.POST.get('message')
+            sender = request.POST.get('email')
+            admin_email = settings.ADMIN_EMAIL
+            send_mail(subject, body, sender, [admin_email])
             form.clean()
             return HttpResponseRedirect(request.path_info)
         else:
@@ -40,7 +45,6 @@ def join_page(request):
             member = form.save()
             messages.success(request, 'Thanks! We will contact you once your membership is active')
             form.clean()
-            print(member.email)
             subject = request.POST.get('email')
             body = render_to_string('pages/membership_email/application.txt', {'member': member})
             admin_email = settings.ADMIN_EMAIL
