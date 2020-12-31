@@ -19,7 +19,7 @@ The site can be viewed by different kind of visitors, looking for completely dif
 - I want to purchase necessary gear with club branding
 - I want to pay online and receive the items delivered to a given address
 - I want to login and see my previous orders
-#### Site admins
+#### Site Admin
 - I want to login to dedicated admin area of the site
 - I want to manage items in the shop - add, remove, set prices
 - I want to receive notifications about online orders
@@ -77,11 +77,13 @@ The mockups were created using Balsamiq app. Below is the selection of various s
 ## Testing
 - During the whole development process I was using PyCharm built in code checkers and formatters. I’ve also tested the website on ww3 html and css validators. Both were passed successfully
 - For the real device testing I’ve used a selection of devices, iPhones, iPad and Samsung Galaxy phone. No major issues with the layout was observed
+
 To test the app logic I’ve followed the user scenarios to make sure all functionality is working as planned:
 - After creating a superuser I’ve tested the backend, using `/admin` url. I was able to login and see the models I’ve created
 - I tested the CRUD functions on the backend. I was able to create, update and delete all models of the application
 - Following the module on user profile app I’ve noticed a small issue - when a superuser is created, it doesn’t create a new profile. This caused the application to crash when superuser credentials were used to regular login.
 - The solution for that was to login to the database directly and create new, empty profile for the superuser ID
+
 Next, I’ve tested the shop section, consisting of product, basket, checkout, profile apps
 - The shop page displays all products correctly, the category filter works as expected
 - On product detail page the basket functionality works as expected, I was able to add product to basket, select size and quantity
@@ -90,12 +92,16 @@ Next, I’ve tested the shop section, consisting of product, basket, checkout, p
 - The payment form uses Stripe test API keys, each correct transaction using Stripe test card numbers resulted in the payment recorded on Stripe Dashboard
 - The application uses Stripe webhooks to send back successful or failed payment attempts. All events were caught by special url `checkout/wh` and orders were recorded in database 
 - If the transaction is done with logged in user the delivery details are saved inside user profile record. Same information is used to fill in the form on subsequent transactions
+
 After that I’ve tested both contact and membership forms
 - Both forms correctly display selected fields, thanks to Crispy Forms package all fields follow Bootstrap styling and required fields are marked with `*`
 - The date field on the membership form was displayed as text by default so I’ve used a small JavaScript command to change its type to ‘date’ as most of the modern browsers support the calendar widget on date field
 - Both forms are linked to their Models and all entries are saved in the database. On top of that a dedicated ‘Admin’ email gets a notification after each entry
+## Features not implemented
+- When the site admin changes status of the application from 'Candidate' to 'Member' I'd like to send a welcome email to the application sender
+- Protect all forms with HoneyPot or ReCaptcha to prevent spam emails being sent 
 ## Credits and Acknowledgements
 - All blog posts were taken from a selection of Irish football club websites
 - Club history text was taken from Drogheda United website
 - All images come from royalty-free services such us Unsplash, Pexels
-- Product mockups were done using various Photoshop mockup I have in my stock library
+- Product mockups were done using various Photoshop mockups I have in my stock library
